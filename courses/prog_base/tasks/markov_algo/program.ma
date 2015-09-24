@@ -1,0 +1,9 @@
+ba->ab
+cb->bc
+ca->ac
+aa->a
+bb->b
+cc->c
+a->|
+b->|
+c->|
