@@ -4,7 +4,7 @@
 int satisfies(int, int, int);
 
 int main() {
-    int aval = 0, bval = 0, cval = 0;
+    int aval = -127, bval = -128, cval = -10;
     int resultVal;
 
     resultVal = satisfies(aval, bval, cval);
@@ -30,18 +30,19 @@ sum2=a+c;}
   else  if((c<b&&b<=a)||(c<a&&a<=b))
 {modmin=abs(c);
 sum2=b+a;}
-   if (sum2 < -256 && (log2(modmin)%1)=0 && modmin<256)
-    result 1;
-   if (((abs(sum2)-modmin)<16)||(abs(sum2)<16))
-    result 1;
+
+   if (((abs(sum2)-modmin)< 16)||(abs(sum2)< 16))
+    return 1;
 }
 if ((a<0 && b>=0 && c>=0 && a> -256)
     || (b<0 && a>=0 && c>=0 && b> -256 )
     || (c<0 && a>=0 && b>=0 && c> -256)
-    ||(a<0 && b<0 && c>=0 && 9*(a+b)>-256)
-    ||(a<0 && c<0 && b>=0 && 9*(a+c)>-256)
-    ||(b<0 && c<0 && a>=0 && 9*(b+c)>-256))
-   {result 1;}
+    ||
+
+    ((a<0 && b<0 && c>=0 ) ||(a<0 && c<0 && b>=0 )||(b<0 && c<0 && a>=0))&&9*(b+c)> -256
+
+    )
+   {return 1;}
 
 
 if (a>b && b>c && c>=0)
@@ -52,27 +53,28 @@ if (b>a && a>c && c>=0)
 {min=c;
 max=b;}
 
-if (c>a && a>b &&b>=0)
+if (c>a && a>b &&b>= 0)
 {max=c;
 min=b;}
 
-if (a>c && c>b && b>=0)
+if (a>c && c>b && b>= 0)
 {min=b;
 max=a;}
 
-if (b>c && c>a && a>=0)
+if (b>c && c>a && a>= 0)
 {min=a;
 max=b;}
 
-if (c>b && b>a && a>=0)
+if (c>b && b>a && a>= 0)
 {min=a;
 max=c;}
 
-if (max%min=0)
- result 1;
-if (min=0)
-    result 0;
- else result 0;
+if (max%min == 0)
+ return 1;
+if ( min == 0)
+    return 0;
+
+ else return 0;
 
    return result;
 }

@@ -5,7 +5,7 @@
 int exec(int, int, int);
 
 int main() {
-    int opval = 0, aval = 0, bval = 0;
+    int opval = -2, aval = 49, bval = 11;
     int resultVal;
 
     resultVal = exec(opval, aval, bval);
@@ -17,6 +17,9 @@ int main() {
 int exec (int op, int a, int b)
 {
 int result;
+int c;
+c=a;
+if(op<0) {op=-op; a=b ; b=c;}
  switch (op)
  {case 0: return -a;
   case 1: return a+b;
@@ -32,14 +35,14 @@ int result;
   case 9: return a<b? a:b;
   case 10:
     switch ( abs(b)%8)
-     {case 0: return abs(a)*sizeof(char);
-      case 1: return abs(a)*sizeof(signed char);
-      case 2: return abs(a)*sizeof(short);
-      case 3: return abs(a)*sizeof(unsigned int);
-      case 4: return abs(a)*sizeof(long);
-      case 5: return abs(a)*sizeof(unsigned long long);
-      case 6: return abs(a)*sizeof(float);
-      case 7: return abs(a)*sizeof(double);
+     {case 0: return abs(a)*sizeof(char);/* 1 byte */
+      case 1: return abs(a)*sizeof(signed char);/*1 byte */
+      case 2: return abs(a)*sizeof(short);/* 2 bytes*/
+      case 3: return abs(a)*sizeof(unsigned int);/*4 bytes */
+      case 4: return abs(a)*sizeof(long);/*4 bytes*/
+      case 5: return abs(a)*sizeof(unsigned long long);/*8 bytes */
+      case 6: return abs(a)*sizeof(float);/*4 bytes */
+      case 7: return abs(a)*sizeof(double);/*8 bytes */
       }
  case 11: if(b==0)
  return 0;
