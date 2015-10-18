@@ -1,22 +1,23 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+double long2double (long long);
 int main (){
-long long x; //number
-short S, i; //i - counter, S-sign
-double F, R; // F-fraction, R - result
-int E; // E - exponent
+long long x; //x
+printf("%.325llf",long2double(x));
+}
+
+double long2double (long long x)
+{
+short S,j, i; //i - counter, S-sign
+double F=0, R, E=0; // F-fraction, R - result,E - exponent
+
 printf("Enter the long long number ");
 scanf("%lli", &x);
 
-    if ((x >> 63)==0){
-    S = 0;
-    E = (x >> 52);
-    }
-        else {
-        S=1;
-        E = abs((x >> 52)+1);
+   S=(x>>63)&1;
+for (j=52;j<63;++j) {
+        E+=((x>>j)&1)*(pow(2,(j-52)));
         }
 for (i = 51; i >= 0; i--) {
 F+=((( x >> i)&1)*(pow(2, i - 52)));
