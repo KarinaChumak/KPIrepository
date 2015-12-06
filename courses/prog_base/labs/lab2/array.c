@@ -27,7 +27,7 @@ int main(void){
      srand(time(NULL));
     fillRand3(arr, size);
     printf("\nCheckRand3= %d", checkRand3(arr, size));
-    printf("\nAverage= %f", meanValue(arr, size));
+    printf("\nAverage= %.2f", meanValue(arr, size));
     printf("\nMax = %d" , maxValue(arr, size));
     printf("\nMean_Index= %d", meanIndex(arr, size));
     printf("\nMax_Index= %d", maxIndex(arr, size));
@@ -42,7 +42,7 @@ int main(void){
 void fillRand3(int arr[], int size){
     int i;
     for(i=0; i<size; i++){
-    arr[i]=rand()%2-0;
+    arr[i]=rand()%30-15;
     printf("%d ", arr[i]);
     }
 }
