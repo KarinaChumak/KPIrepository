@@ -13,28 +13,26 @@ struct rectangular {
     int height;
 };
 
-double area (struct rectangular *rect);
+double area (struct rectangular *rect,int size);
 int main (){
     struct rectangular rect[3]={5,3,28,10,    8,6,21,9,   7,12,10,2};
     for(int i=0;i<3;i++){
     printf(" Coordinates of first point :(%i,%i), length:%i, height:%i\n" , rect[i].p1.x, rect[i].p1.y, rect[i].length, rect[i].height );
     }
 
-area(rect);
 
+printf("Minimum area: %.0f", area(rect,3));
   return 0;
 }
 
-double area (struct rectangular *rect){
- double res;
- for(int i=0;i<3;i++){
- res=rect[i].length*rect[i].height;
- printf("%darea = %.0f; ", i+1, res );}
+double area (struct rectangular *rect, int size){
 
  double minArea=0;
- for(int i=1;i<3;i++){
-     minArea=rect[0].length*rect[0].height;
-    if (rect[i].length*rect[i].height<rect[0].length*rect[0].height)
-        minArea=rect[i].length*rect[i].height;
+ double tmpArea=0;
+ minArea=rect[0].length*rect[0].height;
+ for(int i=1;i<size;i++){
+     tmpArea=rect[i].length*rect[i].height;
+    if (tmpArea<minArea)
+        minArea=tmpArea;
  }
-  printf("\nMinimal area = %.0f; ",  minArea );}
+  return minArea;}
