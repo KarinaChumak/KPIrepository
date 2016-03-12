@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1457797713 source:f:\documents\github\kpirepository\courses\prog_base_2\tasks\module\list.c
+	"list.h"
+	<stdlib.h>
+
+1456784092 f:\documents\github\kpirepository\courses\prog_base_2\tasks\module\list.h
+
+1457797761 source:f:\documents\github\kpirepository\courses\prog_base_2\tasks\module\main.c
+	<stdlib.h>
+	<stdarg.h>
+	<stddef.h>
+	<setjmp.h>
+	<cmocka.h>
+	"list.h"
+
