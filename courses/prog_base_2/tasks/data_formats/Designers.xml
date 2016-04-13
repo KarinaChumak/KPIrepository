@@ -1,0 +1,53 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Designers>
+    <Designer>
+        <name>Alan</name>
+        <surname>Smith</surname>
+        <company position='Designer'>Smth</company>
+		<projects>
+		     <project>
+		<deadline>2017-10-14</deadline>
+		<customer>Bryan Christian</customer>
+		 <budget>500000</budget>
+		    </project>
+        <deadline>2016-10-18</deadline>
+		<customer>Sharp Scott</customer>
+		 <budget>70000</budget>
+		</projects>
+        <rating>6.2</rating>
+    </Designer>
+    <Designer>
+         <name>Christopher</name>
+        <surname>Cole</surname>
+        <company position='Designer'>Smth</company>
+		<projects>
+		     <project>
+		<deadline>2016-12-10</deadline>
+		<customer>Symon Francis</customer>
+		 <budget>300000</budget>
+		    </project>
+        <deadline>2015-02-10</deadline>
+		<customer>Sharp Scott</customer>
+		 <budget>480000</budget>
+		</projects>
+        <rating>7.0</rating>
+
+    </Designer>
+	<Designer>
+         <name>Marsha</name>
+        <surname>Townsend</surname>
+        <company position='Designer'>Smth</company>
+		<projects>
+		     <project>
+		<deadline>2018-06-29</deadline>
+		<customer>Sharp Scott</customer>
+		 <budget>1000000</budget>
+		    </project>
+        <deadline>2017-11-19</deadline>
+		<customer> Symon Francis</customer>
+		 <budget> 369000</budget>
+		</projects>
+		<rating>9.1</rating>
+    </Designer>
+</Designers>

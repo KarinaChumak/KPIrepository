@@ -1,0 +1,70 @@
+[
+	{
+		"name": "Alan",
+		"surname": "Smith",
+		"working": {
+			"company": "Smth",
+			"position": "designer"
+		},
+		"rating":6.2 ,
+		"projects": [
+		{
+		  "deadline": "2017-10-14",
+		  "customer": "Bryan Christian",
+		  "budget": 500000
+		},
+		{
+		"deadline": "2016-10-18",
+		  "customer": "Sharp Scott",
+		  "budget": 70000
+		}
+                    ]
+
+	},
+	{
+        "name": "Christopher",
+		"surname": "Cole",
+		"working": {
+			"company": "Smth",
+			"position": "designer"
+		},
+		"rating":7.0,
+		"projects": [
+		{
+		  "deadline": "2016-12-10",
+		  "customer": "Symon Francis",
+		  "budget": 300000
+		},
+		{
+		 "deadline": "2015-02-10",
+		  "customer": "Sharp Scott ",
+		  "budget": 480000
+		  		}
+                    ]
+
+	},
+
+	{
+
+			"name": "Marsha",
+		"surname": "Townsend",
+		"working": {
+			"company": "Smth",
+			"position": "designer"
+		},
+		"rating": 9.1,
+		"projects": [
+		{
+		  "deadline": "2018-06-29",
+		  "customer": "Sharp Scott",
+		  "budget": 1000000
+		},
+		{
+		 "deadline": "2017-11-19",
+		  "customer": " Symon Francis",
+		  "budget": 369000
+		}
+                    ]
+
+	}
+]

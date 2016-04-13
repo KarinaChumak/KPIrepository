@@ -1,0 +1,74 @@
+# depslib dependency file v1.0
+1460322578 source:f:\documents\github\kpirepository\courses\prog_base_2\tasks\data_formats\cjson.c
+	<string.h>
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<float.h>
+	<limits.h>
+	<ctype.h>
+	"cJSON.h"
+
+1460322578 f:\documents\github\kpirepository\courses\prog_base_2\tasks\data_formats\cjson.h
+
+1460328664 source:f:\documents\github\kpirepository\courses\prog_base_2\tasks\data_formats\designers.c
+	<stdio.h>
+	"Designers.h"
+
+1460328664 f:\documents\github\kpirepository\courses\prog_base_2\tasks\data_formats\designers.h
+	<stdio.h>
+
+1460328664 source:f:\documents\github\kpirepository\courses\prog_base_2\tasks\data_formats\main.c
+	<stdio.h>
+	<stdlib.h>
+	"designers.h"
+
+1460328700 source:f:\documents\github\kpirepository\courses\prog_base_2\tasks\data_formats\parse.c
+	<stdio.h>
+	<stdlib.h>
+	"cJSON.h"
+	<stdio.h>
+	"parse.h"
+	"Designers.h"
+
+1460326319 f:\documents\github\kpirepository\courses\prog_base_2\tasks\data_formats\parse.h
+	"Designers.h"
+	<stdio.h>
+
+1460322578 source:f:\documents\github\kpirepository\courses\test1\data_formats\cjson.c
+	<string.h>
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<float.h>
+	<limits.h>
+	<ctype.h>
+	"cJSON.h"
+
+1460322578 f:\documents\github\kpirepository\courses\test1\data_formats\cjson.h
+
+1460584186 source:f:\documents\github\kpirepository\courses\test1\data_formats\designers.c
+	<stdio.h>
+	"Designers.h"
+
+1460328664 f:\documents\github\kpirepository\courses\test1\data_formats\designers.h
+	<stdio.h>
+
+1460584689 source:f:\documents\github\kpirepository\courses\test1\data_formats\main.c
+	<stdio.h>
+	<stdlib.h>
+	"designers.h"
+
+1460584553 source:f:\documents\github\kpirepository\courses\test1\data_formats\parse.c
+	<stdio.h>
+	<stdlib.h>
+	"cJSON.h"
+	<stdio.h>
+	"parse.h"
+	"Designers.h"
+	"parse.h"
+
+1460584553 f:\documents\github\kpirepository\courses\test1\data_formats\parse.h
+	"Designers.h"
+	<stdio.h>
+
