@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1446671346 source:d:\progs\op\projects\courses\prog_base_2\labs\lab2\lab2staticlib\main.c
+
+1459883778 source:d:\progs\op\projects\courses\prog_base_2\labs\lab2\lab2staticlib\stack.c
+	"stack.h"
+
+1459883694 d:\progs\op\projects\courses\prog_base_2\labs\lab2\lab2staticlib\stack.h
+
+1460923378 source:f:\documents\github\kpirepository\courses\prog_base_2\labs\lab2\lab2staticlib\main.c
+	<stdlib.h>
+	<stdio.h>
+
+1460025242 source:f:\documents\github\kpirepository\courses\prog_base_2\labs\lab2\lab2staticlib\stack.c
+	"stack.h"
+
+1460025242 f:\documents\github\kpirepository\courses\prog_base_2\labs\lab2\lab2staticlib\stack.h
+
+1460995992 source:f:\documents\github\kpirepository\courses\prog_base_2\labs\lab2\lab2staticlib\queue.c
+	<stdio.h>
+	<stdlib.h>
+	"queue.h"
+
+1460996074 f:\documents\github\kpirepository\courses\prog_base_2\labs\lab2\lab2staticlib\queue.h
+
