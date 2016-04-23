@@ -1,0 +1,34 @@
+# depslib dependency file v1.0
+1461445120 source:f:\documents\github\kpirepository\courses\prog_base_2\tasks\database\designers.c
+	<stdlib.h>
+	<stdio.h>
+	"designers.h"
+
+1461451207 source:f:\documents\github\kpirepository\courses\prog_base_2\tasks\database\main.c
+	<stdio.h>
+	<stdlib.h>
+	"db_manager.h"
+	"designers.h"
+
+1460716388 f:\documents\github\kpirepository\courses\prog_base_2\tasks\database\\sqlite3.h
+	<stdarg.h>
+
+1461166983 f:\documents\github\kpirepository\courses\prog_base_2\tasks\database\designers.h
+
+1460716388 f:\documents\github\kpirepository\courses\prog_base_2\tasks\database\sqlite3.h
+	<stdarg.h>
+
+1461451357 source:f:\documents\github\kpirepository\courses\prog_base_2\tasks\database\db_manager.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<sqlite3.h>
+	"db_manager.h"
+	"designers.h"
+
+1461446545 f:\documents\github\kpirepository\courses\prog_base_2\tasks\database\db_manager.h
+	"designers.h"
+
+1460665958 f:\documents\sqlite\sqlite3.h
+	<stdarg.h>
+
