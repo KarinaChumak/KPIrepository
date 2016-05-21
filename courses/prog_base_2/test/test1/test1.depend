@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1463825690 source:f:\documents\github\kpirepository\courses\prog_base_2\test\test1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+	"audioplayer.h"
+
+1463819538 f:\documents\github\kpirepository\courses\prog_base_2\test\libtest\list.h
+	<stdlib.h>
+
+1463824809 f:\documents\github\kpirepository\courses\prog_base_2\test\libtest\audioplayer.h
+	"list.h"
+	<stdlib.h>
+
