@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "list.h"
 
 typedef struct text_s text_t;
 typedef struct sentence_s sentence_t;

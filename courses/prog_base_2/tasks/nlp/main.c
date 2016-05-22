@@ -1,18 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "nlp.h"
-#define MAX_BUFF_SIZE 100000
 
 int main()
 {
     FILE * input = file_new("input.txt","r");
     FILE * output = file_new("output.txt","w");
-    char buff[MAX_BUFF_SIZE];
+    char buffer[100000];
     sentence_t * sentence;
     word_t * word;
-    fread(buff,1,MAX_BUFF_SIZE,input);
-    text_t * text = text_new(buff);
-    removeSymbols(buff);
+    fread(buffer,1,100000,input);
+    text_t * text = text_new(buffer);
+    removeSymbols(buffer);
     text_divide(text);
     int sentences_count = text_getSentencesCount(text);
     for (int i = 0; i < sentences_count; i++)
@@ -27,7 +26,6 @@ int main()
                 {
                     word = sentence_getWords(sentence,j);
                     if (word_getWord(word) != NULL) fprintf(output,"%s,",word_getWord(word));
-
                 }
 
         fprintf(output,"\n");
@@ -41,6 +39,5 @@ int main()
     file_free(input);
     file_free(output);
     printf("DONE");
-
     return 0;
 }
