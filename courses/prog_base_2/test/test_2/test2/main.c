@@ -12,6 +12,11 @@ int main()
     socket_listen(server);
     char buf[10000];
     socket_t * client = NULL;
+      const char * dbFile = "designers.db";
+    db_t * db = db_new(dbFile);
+
+    list_t * designers = list_new();
+
      while(1)
     {
         client = socket_accept(server);
@@ -24,7 +29,9 @@ int main()
         {
             server_info(client);
         }
-
+        if (strcmp(rs.method,"GET") == 0 && strcmp(rs.uri, "/database") == 0 ){
+            server_db(client,db,designers);
+        }
         }
     }
     return 0;
