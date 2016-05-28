@@ -6,8 +6,6 @@
 #include "server.h"
 #include "cJSON.h"
 
-
-
 http_request_t
 http_request_parse(const char * const request) {
     http_request_t req;
@@ -55,21 +53,54 @@ http_request_parse(const char * const request) {
 }
 
 
-
 void server_info(socket_t * client)
 {
-    char homeBuf[1024];
+    char buffer[1024];
     cJSON * jInfo = cJSON_CreateObject();
     cJSON_AddItemToObject(jInfo, "name", cJSON_CreateString("Karina"));
-    cJSON_AddItemToObject(jInfo, "surname", cJSON_CreateString("Chumak"));
+    cJSON_AddItemToObject(jInfo, "surname", cJSON_CreateString("Chumak:)"));
     cJSON_AddItemToObject(jInfo, "group", cJSON_CreateString("KP-51"));
     cJSON_AddItemToObject(jInfo, "variant", cJSON_CreateNumber(13));
     char * pageText = cJSON_Print(jInfo);
 
-    sprintf(homeBuf,
+ sprintf(buffer,
             "HTTP/1.1 404 \n"
             "Content-Type: text/html/application/json\n"
             "Content-Length: %zu\n"
             "\n%s", strlen(pageText), pageText);
-    socket_write(client, homeBuf,sizeof(homeBuf));
+
+    socket_write(client, buffer,sizeof(buffer));
+
+}
+
+
+void server_db(socket_t * client, db_t * db, list_t * designers)
+{
+        char buffer[10240];
+        db_getDesignersTask(db,designers);
+        cJSON * jPageText = cJSON_CreateArray();
+
+        for(int i = 0; i < list_size(designers); i++)
+        {
+            designer_t * des = list_get(designers, i);
+
+            cJSON * jText = cJSON_CreateObject();
+            cJSON_AddItemToObject(jText, "Name", cJSON_CreateString(designer_getName(des)));
+            cJSON_AddItemToObject(jText, "Surname", cJSON_CreateString(designer_getSurname(des)));
+            cJSON_AddItemToObject(jText, "Employment date", cJSON_CreateString(designer_getEmployment_date(des)));
+            cJSON_AddItemToObject(jText, "Rating", cJSON_CreateNumber(designer_getRating(des)));
+            cJSON_AddItemToObject(jText, "Number of sites", cJSON_CreateNumber(designer_getNumOfCites(des)));
+            cJSON_AddItemToObject(jText, "Salary", cJSON_CreateNumber(designer_getNumOfCites(des)));
+            cJSON_AddItemToArray(jPageText, jText);
+        }
+
+       char * pageText = cJSON_Print(jPageText);
+
+       sprintf(buffer,
+               "HTTP/1.1 404 \n"
+            "Content-Type: text/html/application/json\n"
+            "Content-Length: %zu\n"
+            "\n%s", strlen(pageText), pageText);
+
+    socket_write(client, buffer,sizeof(buffer));
 }

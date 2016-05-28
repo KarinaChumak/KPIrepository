@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "socket.h"
+#include "db_manager.h"
 
 typedef struct {
     char key[256];

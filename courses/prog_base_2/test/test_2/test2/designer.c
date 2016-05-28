@@ -23,7 +23,7 @@ void designer_free(designer_t * self) {
     free(self);
 }
 
-void designer_set(designer_t * self, int id, char * name, char * surname, char * employment_date,  double rating, int numOfCities, int salary) {
+void designer_set(designer_t * self, int id, const char * name,const char * surname,const char * employment_date,  double rating, int numOfCities, int salary) {
     self->id = id;
     strcpy(self->name, name);
     strcpy(self->surname, surname);
@@ -37,4 +37,33 @@ void designer_set(designer_t * self, int id, char * name, char * surname, char *
 char * designer_getName(designer_t * self)
 {
     return self->name;
+}
+
+
+
+char * designer_getSurname(designer_t * self)
+{
+    return self->surname;
+}
+
+char * designer_getEmployment_date(designer_t * self)
+{
+    return self->employment_date;
+}
+
+
+double designer_getRating(designer_t * self)
+{
+    return self->rating;
+}
+
+int designer_getNumOfCites(designer_t * self)
+{
+    return self->numOfCites;
+}
+
+
+int designer_getSalary(designer_t * self)
+{
+    return self->salary;
 }

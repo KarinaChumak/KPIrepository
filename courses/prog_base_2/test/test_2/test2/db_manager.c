@@ -27,8 +27,8 @@ void db_free(db_t * self) {
 
 int db_getDesignersTask(db_t * self,  list_t * designers) {
     sqlite3_stmt * stmt = NULL;
-    const char * sqlQuery = "SELECT * FROM Designer";
-    sqlite3_prepare_v2(self->db, sqlQuery, strlen(sqlQuery), &stmt, 0);
+    const char * qry = "SELECT * FROM Designer;";
+    sqlite3_prepare_v2(self->db, qry, strlen(qry), &stmt, NULL);
 
     while (1) {
         int rc = sqlite3_step(stmt);
@@ -37,24 +37,22 @@ int db_getDesignersTask(db_t * self,  list_t * designers) {
             exit(1);
         } else if (SQLITE_DONE == rc) {
             break;
-        } else {
-               int id = sqlite3_column_int(stmt, 0);
-    const unsigned char * name = sqlite3_column_text(stmt, 1);
-    const unsigned char * surname = sqlite3_column_text(stmt, 2);
-    const unsigned char *  employment_date = sqlite3_column_text(stmt, 3);
-    double rating = sqlite3_column_double(stmt, 4);
-    int numOfCites = sqlite3_column_int(stmt, 5);
-    int salary = sqlite3_column_int(stmt, 6);
+        } else  if (SQLITE_ROW == rc){
 
-       designer_t * des = designer_new();
+            int id = sqlite3_column_int(stmt, 0);
+            const unsigned char * name = sqlite3_column_text(stmt, 1);
+            const unsigned char * surname = sqlite3_column_text(stmt, 2);
+            const unsigned char *  employment_date = sqlite3_column_text(stmt, 3);
+            double rating = sqlite3_column_double(stmt, 4);
+            int numOfCites = sqlite3_column_int(stmt, 5);
+            int salary = sqlite3_column_int(stmt, 6);
+
+            designer_t * des = designer_new();
             designer_set(des, id, name, surname, employment_date, rating, numOfCites,salary);
             list_add(designers, des);
-            designer_free(des);
-            puts(designer_getName(list_get(designers, 0)));
-        }
+            }
     }
     sqlite3_finalize(stmt);
-
 }
 
 

@@ -29,7 +29,8 @@ int main()
         {
             server_info(client);
         }
-        if (strcmp(rs.method,"GET") == 0 && strcmp(rs.uri, "/database") == 0 ){
+        if (strcmp(rs.method,"GET") == 0 && strcmp(rs.uri, "/database") == 0 )
+        {
             server_db(client,db,designers);
         }
         }
