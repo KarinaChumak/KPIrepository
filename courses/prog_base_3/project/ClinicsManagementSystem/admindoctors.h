@@ -6,7 +6,7 @@
 
 #include <adminwindow.h>
 #include <adminnewdoctor.h>
-
+#include <admindoctorprofile.h>
 
 namespace Ui {
 class AdminDoctors;
@@ -23,9 +23,11 @@ public:
     ~AdminDoctors();
 
 private slots:
-    void on_commandLinkButton_clicked();
-
     void on_pushButton_addDoctor_clicked();
+
+    void on_pushButton_back_clicked();
+
+    void on_tableView_activated(const QModelIndex &index);
 
 private:
     Ui::AdminDoctors *ui;

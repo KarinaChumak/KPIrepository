@@ -40,6 +40,11 @@ void AdminNewDoctor::on_pushButton_save_clicked()
     surname = ui->lineEdit_surname->text();
     specialization = ui->lineEdit_specialization->text();
 
+    if ((name == "")||(surname == "")){
+        QMessageBox::critical(this,tr("Error"), tr("Enter the name and surname"));
+    }
+    else{
+
     QSqlQuery qry;
     if (qry.exec("insert into doctors ( name,surname,specialization ) values ('"+name+"', '"+surname+"', '"+specialization+"')"))
      {
@@ -51,5 +56,5 @@ void AdminNewDoctor::on_pushButton_save_clicked()
     else {
         QMessageBox::critical(this, tr("ERROR"),qry.lastError().text());
 
-    }
+    }}
 }
