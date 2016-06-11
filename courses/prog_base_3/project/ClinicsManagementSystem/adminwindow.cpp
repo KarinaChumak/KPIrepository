@@ -37,3 +37,4 @@ void Adminwindow::on_pushButton_AdminPatients_clicked()
     admpat.setModal(true);
     admpat.exec();
 }
+

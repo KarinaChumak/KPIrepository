@@ -29,6 +29,16 @@ private slots:
 
     void on_tableView_activated(const QModelIndex &index);
 
+
+
+    void on_pushButton_update_clicked();
+
+    void on_pushButton_search_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_listView_patients_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::AdminDoctors *ui;
 };

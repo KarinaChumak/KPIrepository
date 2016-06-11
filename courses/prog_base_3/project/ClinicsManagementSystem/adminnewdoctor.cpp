@@ -49,7 +49,7 @@ void AdminNewDoctor::on_pushButton_save_clicked()
     if (qry.exec("insert into doctors ( name,surname,specialization ) values ('"+name+"', '"+surname+"', '"+specialization+"')"))
      {
         QMessageBox::information(this, tr("Add new doctor"),tr("Saved"));
-        mydb.close();
+
         this->close();
 
      }

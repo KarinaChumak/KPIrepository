@@ -15,17 +15,18 @@ AdminDoctors::AdminDoctors(QWidget *parent) :
 
    else
      ui->label_2->setText("Connected");
+
 //to load the table
    QSqlQueryModel * model = new QSqlQueryModel();
 
    QSqlQuery * qry = new QSqlQuery(mydb);
 
-   qry->prepare("select * from doctors");
+   qry->prepare("select name,surname,specialization from doctors");
    qry->exec();
    model->setQuery(*qry);
    ui->tableView->setModel(model);
 
-   mydb.close();
+
    qDebug()<<(model->rowCount());
 }
 
@@ -37,7 +38,7 @@ AdminDoctors::~AdminDoctors()
 
 void AdminDoctors::on_pushButton_addDoctor_clicked()
 {
-       mydb.close();
+
        //this->close();
      AdminNewDoctor admNewDoc;
        admNewDoc.setModal(true);
@@ -53,51 +54,31 @@ void AdminDoctors::on_pushButton_back_clicked()
         Adminwindow admwin;
         admwin.setModal(true);
         admwin.exec();
-
 }
 
 void AdminDoctors::on_tableView_activated(const QModelIndex &index)
 {
+     QString name,surname,specialization;
     QString val = ui->tableView->model()->data(index).toString();
 
-    if(!mydb.open())
-        ui->label_2->setText("Failed to open the database");
-
-
 QSqlQuery qry;
-qry.prepare("select * from doctors  where id = '"+val+"' or name = '"+val+"' or surname = '"+val+"' or specialization = '"+val+"' or patients = '"+val+"' ");
-
-
-
-/*
-if (qry.exec()){
-
-    AdminDoctorProfile admdocprof;
-    admdocprof.setModal(true);
-    admdocprof.exec();
-
-       while (qry.next()){
-
-           admdocprof.lineEdit_name->setText((qry.value(1).toString()));
-           //admdocprof->lineEdit_2->setText((qry.value(2).toString()));
-           //admdocprof->lineEdit_3->setText((qry.value(3).toString()));
-
-    }
-       mydb.close();
-}*/
+qry.prepare("select * from doctors  where  name = '"+val+"' or surname = '"+val+"' or specialization = '"+val+"'  ");
 
 
 if (qry.exec()){
        while (qry.next()){
-
-           ui->label_3->setText((qry.value(1).toString()));
-           ui->label_4->setText((qry.value(2).toString()));
-           ui->label_5->setText((qry.value(3).toString()));
-
-    }
-       mydb.close();
-}
-
+           name = qry.value(1).toString();
+           surname = qry.value(2).toString();
+           specialization = (qry.value(3).toString());
+           ui->lineEdit_name->setText(name);
+           ui->lineEdit_surname->setText(surname);
+           ui->lineEdit_specialization->setText(specialization);
+           QSqlQueryModel * model = new QSqlQueryModel();
+         qry.prepare("select surname from patients where doctor = '"+surname+"'");
+          qry.exec();
+         model->setQuery(qry);
+         ui->listView_patients->setModel(model);
+    }}
 
 else {
      QMessageBox::critical(this, tr("ERROR"),qry.lastError().text());
@@ -105,4 +86,84 @@ else {
 
 }
 
+}
+
+
+void AdminDoctors::on_pushButton_update_clicked()
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+
+    QSqlQuery * qry = new QSqlQuery(mydb);
+
+    qry->prepare("select name,surname,specialization from doctors");
+    qry->exec();
+    model->setQuery(*qry);
+    ui->tableView->setModel(model);
+
+
+    qDebug()<<(model->rowCount());
+}
+
+void AdminDoctors::on_pushButton_search_clicked()
+{
+    QString name,surname,specialization;
+    name=ui->lineEdit_name->text();
+    surname = ui->lineEdit_surname->text();
+
+
+       QSqlQuery * qry = new QSqlQuery(mydb);
+       qry->prepare("select * from doctors where surname = '"+surname+"'  ");
+       if (qry->exec()){
+           int count = 0;
+              while (qry->next()){
+                  count++;
+                  name = qry->value(1).toString();
+                  surname = qry->value(2).toString();
+                  specialization = (qry->value(3).toString());
+                  ui->lineEdit_name->setText(name);
+                  ui->lineEdit_surname->setText(surname);
+                  ui->lineEdit_specialization->setText(specialization);
+
+           }
+
+  QSqlQueryModel * model = new QSqlQueryModel();
+   qry->prepare("select surname from patients where doctor = '"+surname+"'");
+    qry->exec();
+   model->setQuery(*qry);
+   ui->listView_patients->setModel(model);
+       if (count <1) QMessageBox::information(this, tr("oops"),"No such doctor");}
+
+
+}
+
+void AdminDoctors::on_pushButton_clicked()
+{
+    QString name,surname;
+    name=ui->lineEdit_name->text();
+    surname = ui->lineEdit_surname->text();
+    QSqlQuery * qry = new QSqlQuery(mydb);
+    qry->prepare("delete from doctors where surname = '"+surname+"' and name = '"+name+"' " );
+    if (qry->exec()){
+                     QMessageBox::information(this, tr("Success"),"This doctor was deleted");
+                     qry->exec("update patients set doctor = null where doctor = '"+surname+"' ");
+                     ui->lineEdit_name->setText("");
+                     ui->lineEdit_surname->setText("");
+                     ui->lineEdit_specialization->setText("");
+                     //ui->listView_patients->close();
+
+                     }
+    else  QMessageBox::information(this, tr("oops"),qry->lastError().text());
+}
+
+void AdminDoctors::on_listView_patients_doubleClicked(const QModelIndex &index)
+{
+    QString val = ui->listView_patients->model()->data(index).toString();
+
+QSqlQuery qry;
+qry.prepare("update patients set doctor = null  where   surname = '"+val+"' ");
+        if (qry.exec()){
+                 QMessageBox::information(this, tr("Success"),"This patient was removed");
+
+}
+        else  QMessageBox::critical(this, tr("ERROR"),qry.lastError().text());
 }

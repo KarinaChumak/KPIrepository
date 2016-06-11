@@ -5,6 +5,10 @@
 #include <QMainWindow>
 #include <QFileInfo>
 #include <adminwindow.h>
+#include <doctorwindow.h>
+#include <patientwindow.h>
+#include <maindoctorwindow.h>
+
 namespace Ui {
 class LoginWindow;
 }
@@ -15,11 +19,6 @@ class LoginWindow : public QMainWindow
 
 public:
     QSqlDatabase mydb;
-      void connClose(){
-        mydb.close();
-        mydb.removeDatabase(QSqlDatabase::defaultConnection);
-    }
-
 
 public:
     explicit LoginWindow(QWidget *parent = 0);
