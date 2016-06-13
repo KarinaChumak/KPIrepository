@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>300</width>
-    <height>303</height>
+    <width>277</width>
+    <height>340</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,6 +18,10 @@
   </property>
   <property name="windowTitle">
    <string>LoginWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font: 75 8pt &quot;Segoe Print&quot;;
+</string>
   </property>
   <property name="animated">
    <bool>true</bool>
@@ -34,8 +38,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>280</width>
-         <height>230</height>
+         <width>257</width>
+         <height>259</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
@@ -466,9 +470,11 @@
                </property>
                <property name="font">
                 <font>
-                 <family>Microsoft YaHei</family>
-                 <pointsize>10</pointsize>
+                 <family>Segoe Print</family>
+                 <pointsize>8</pointsize>
+                 <weight>9</weight>
                  <italic>false</italic>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="text">
@@ -537,12 +543,22 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QComboBox" name="comboBox"/>
+                  <widget class="QComboBox" name="comboBox">
+                   <property name="toolTip">
+                    <string>Select your status</string>
+                   </property>
+                  </widget>
                  </item>
                 </layout>
                </item>
                <item>
                 <widget class="QPushButton" name="pushButton_login">
+                 <property name="toolTip">
+                  <string>Press to log in the system</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-color: qradialgradient(spread:repeat, cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0 rgba(0, 169, 255, 147), stop:0.497326 rgba(0, 0, 0, 147), stop:1 rgba(0, 169, 255, 147));</string>
+                 </property>
                  <property name="text">
                   <string>Login</string>
                  </property>
@@ -566,8 +582,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>300</width>
-     <height>21</height>
+     <width>277</width>
+     <height>25</height>
     </rect>
    </property>
   </widget>

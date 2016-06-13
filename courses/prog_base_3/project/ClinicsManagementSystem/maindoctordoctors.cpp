@@ -1,6 +1,6 @@
 #include "maindoctordoctors.h"
 #include "ui_maindoctordoctors.h"
-
+#include <QMessageBox>
 #include <maindoctorwindow.h>
 
 MainDoctorDoctors::MainDoctorDoctors(QWidget *parent) :
@@ -10,11 +10,8 @@ MainDoctorDoctors::MainDoctorDoctors(QWidget *parent) :
     ui->setupUi(this);
     mydb =  QSqlDatabase::addDatabase("QSQLITE");
     mydb.setDatabaseName("F:/Documents/GitHub/KPIrepository/courses/prog_base_3/project/ClinicsManagementSystem/logininfo.db");
-    if(!mydb.open())
-        ui->label_2->setText("Failed to open the database");
+    if(! mydb.open()) QMessageBox::information(this, tr("oops"),"Failed to open the database");
 
-    else
-      ui->label_2->setText("Connected");
  //to load the table
     QSqlQueryModel * model = new QSqlQueryModel();
 

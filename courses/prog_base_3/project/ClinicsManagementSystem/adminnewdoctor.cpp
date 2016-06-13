@@ -27,11 +27,7 @@ void AdminNewDoctor::on_pushButton_save_clicked()
 
     mydb =  QSqlDatabase::addDatabase("QSQLITE");
    mydb.setDatabaseName("F:/Documents/GitHub/KPIrepository/courses/prog_base_3/project/ClinicsManagementSystem/logininfo.db");
-   if(!mydb.open())
-       ui->label_status->setText("Failed to open the database");
-
-   else
-     ui->label_status->setText("Connected");
+   if(! mydb.open()) QMessageBox::information(this, tr("oops"),"Failed to open the database");
 
 
 

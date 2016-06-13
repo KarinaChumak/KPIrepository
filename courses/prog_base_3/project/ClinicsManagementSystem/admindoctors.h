@@ -6,7 +6,6 @@
 
 #include <adminwindow.h>
 #include <adminnewdoctor.h>
-#include <admindoctorprofile.h>
 
 namespace Ui {
 class AdminDoctors;

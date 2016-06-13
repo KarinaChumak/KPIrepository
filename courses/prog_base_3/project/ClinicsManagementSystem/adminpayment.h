@@ -3,7 +3,6 @@
 #include <QtSql>
 #include <QDialog>
 #include <adminwindow.h>
-#include <adminnewpayment.h>
 
 namespace Ui {
 class AdminPayment;
@@ -23,7 +22,8 @@ private slots:
 
     void on_pushButton_back_clicked();
 
-    void on_pushButton_addPayment_clicked();
+
+
 
 private:
     Ui::AdminPayment *ui;

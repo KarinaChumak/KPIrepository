@@ -9,19 +9,9 @@ AdminNewPatient::AdminNewPatient(QWidget *parent) :
     ui->setupUi(this);
     mydb =  QSqlDatabase::addDatabase("QSQLITE");
    mydb.setDatabaseName("F:/Documents/GitHub/KPIrepository/courses/prog_base_3/project/ClinicsManagementSystem/logininfo.db");
-  mydb.open();
-
-  QSqlQueryModel * model = new QSqlQueryModel();
-
-  QSqlQuery * qry = new QSqlQuery(mydb);
-
-  qry->prepare("select surname from doctors");
-  qry->exec();
-  model->setQuery(*qry);
-  ui->comboBox->setModel(model);
+   if(! mydb.open()) QMessageBox::information(this, tr("oops"),"Failed to open the database");
 
 }
-
 AdminNewPatient::~AdminNewPatient()
 {
     delete ui;
@@ -29,11 +19,11 @@ AdminNewPatient::~AdminNewPatient()
 
 void AdminNewPatient::on_pushButton_save_clicked()
 {
-    QString name,surname,birthdate,sex,doctor;
+    QString name,surname,birthdate,sex;
     name = ui->lineEdit_name->text();
     surname = ui->lineEdit_surname->text();
     birthdate = ui->lineEdit_birthdate->text();
-    doctor = ui->comboBox->currentText();
+
     if(ui->radioButton_female->isChecked()){
         sex = "female";
     }
@@ -46,8 +36,10 @@ void AdminNewPatient::on_pushButton_save_clicked()
     }
     else{
     QSqlQuery qry;
-    if (qry.exec("insert into patients ( name,surname,birthdate,sex,doctor ) "
-                 "values ('"+name+"', '"+surname+"', '"+birthdate+"', '"+sex+"', '"+doctor+"')"))
+
+
+    if (qry.exec("insert into patients ( name,surname,birthdate,sex ) "
+                 "values ('"+name+"', '"+surname+"', '"+birthdate+"', '"+sex+"')"))
      {
         QMessageBox::information(this, tr("Add new patient"),tr("Saved"));
 
@@ -57,7 +49,14 @@ void AdminNewPatient::on_pushButton_save_clicked()
     else {
         QMessageBox::critical(this, tr("ERROR"),qry.lastError().text());
 
-    }}
+    }
+
+
+
+
+
+
+    }
 }
 
 

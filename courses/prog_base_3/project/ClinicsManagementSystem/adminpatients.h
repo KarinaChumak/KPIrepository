@@ -44,6 +44,8 @@ private slots:
 
     void on_pushButton_delete_clicked();
 
+      void on_listView_bill_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::AdminPatients *ui;
 };

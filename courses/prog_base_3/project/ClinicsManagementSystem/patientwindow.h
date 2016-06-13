@@ -19,6 +19,11 @@ public:
     explicit PatientWindow(QWidget *parent = 0);
     ~PatientWindow();
 
+private slots:
+    void on_pushButton_clicked();
+
+    void on_listView_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::PatientWindow *ui;
 };

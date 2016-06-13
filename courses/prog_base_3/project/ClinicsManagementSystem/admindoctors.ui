@@ -31,7 +31,11 @@
     </widget>
    </item>
    <item row="1" column="0" colspan="2">
-    <widget class="QTableView" name="tableView"/>
+    <widget class="QTableView" name="tableView">
+     <property name="toolTip">
+      <string>Double click the surname of patient to see all information about him</string>
+     </property>
+    </widget>
    </item>
    <item row="0" column="4">
     <widget class="QLabel" name="label_2">
@@ -107,7 +111,11 @@
            </widget>
           </item>
           <item>
-           <widget class="QListView" name="listView_patients"/>
+           <widget class="QListView" name="listView_patients">
+            <property name="toolTip">
+             <string>Double click the name to remove this patient from patients of this doctor</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -115,6 +123,9 @@
       </item>
       <item row="1" column="0">
        <widget class="QPushButton" name="pushButton">
+        <property name="toolTip">
+         <string>Press to delete this doctor. You won't be able to restore the data</string>
+        </property>
         <property name="text">
          <string>Delete this doctor</string>
         </property>
@@ -122,44 +133,24 @@
       </item>
       <item row="1" column="1">
        <widget class="QPushButton" name="pushButton_search">
+        <property name="toolTip">
+         <string>Enter surname of the patient and press this button</string>
+        </property>
         <property name="text">
          <string>Search</string>
         </property>
        </widget>
       </item>
      </layout>
-     <zorder>label_3</zorder>
-     <zorder>label_name</zorder>
-     <zorder>label_5</zorder>
-     <zorder>label_surname</zorder>
-     <zorder>label_7</zorder>
-     <zorder>label_specialization</zorder>
-     <zorder>listView_patients</zorder>
-     <zorder>label_9</zorder>
-     <zorder>lineEdit_surname</zorder>
-     <zorder>lineEdit_specialization</zorder>
-     <zorder>pushButton</zorder>
-     <zorder>pushButton_search</zorder>
-     <zorder>pushButton_search</zorder>
     </widget>
-   </item>
-   <item row="1" column="2">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
    </item>
    <item row="2" column="1">
     <widget class="QPushButton" name="pushButton_update">
+     <property name="toolTip">
+      <string>Press to updata data in the table</string>
+     </property>
      <property name="text">
-      <string>Update the table</string>
+      <string>Update</string>
      </property>
     </widget>
    </item>

@@ -20,6 +20,18 @@ public:
 private slots:
     void on_pushButton_back_clicked();
 
+    void on_pushButton_clicked();
+
+    void on_pushButton_search_clicked();
+
+    void on_tableView_activated(const QModelIndex &index);
+
+    void on_pushButton_edit_clicked();
+
+    void on_pushButton_add_analysis_clicked();
+
+    void on_pushButton_add_medicine_clicked();
+
 private:
     Ui::DoctorPatient *ui;
 };

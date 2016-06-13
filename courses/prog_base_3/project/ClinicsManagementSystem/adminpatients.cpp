@@ -9,11 +9,8 @@ AdminPatients::AdminPatients(QWidget *parent) :
     ui->setupUi(this);
     mydb =  QSqlDatabase::addDatabase("QSQLITE");
    mydb.setDatabaseName("F:/Documents/GitHub/KPIrepository/courses/prog_base_3/project/ClinicsManagementSystem/logininfo.db");
-   if(!mydb.open())
-       ui->label_2->setText("Failed to open the database");
+   if(! mydb.open()) QMessageBox::information(this, tr("oops"),"Failed to open the database");
 
-   else
-     ui->label_2->setText("Connected");
    //to load the table
       QSqlQueryModel * model = new QSqlQueryModel();
 
@@ -138,11 +135,11 @@ void AdminPatients::on_pushButton_search_clicked()
             while(qry->next())
             {
                 count ++;
-                name = qry->value(1).toString();
-                surname = qry->value(2).toString();
-                birthdate = qry->value(3).toString();
-               sex = qry->value(4).toString();
-               doctor = qry->value(6).toString();
+                name = qry->value(0).toString();
+                surname = qry->value(1).toString();
+                birthdate = qry->value(2).toString();
+               sex = qry->value(3).toString();
+               doctor = qry->value(5).toString();
 
             }
     if(count == 1){
@@ -153,10 +150,10 @@ void AdminPatients::on_pushButton_search_clicked()
         ui->label_sex->setText(sex);
         ui->label_doctor->setText(doctor);
         QSqlQueryModel * model = new QSqlQueryModel();
-        qry->prepare("select Service,Bill  from bills where Name = '"+name+"'and Surname = '"+surname+"'");
+        qry->prepare("select Service  from bills where Name = '"+name+"'and Surname = '"+surname+"'and status is null ");
         qry->exec();
         model->setQuery(*qry);
-        ui->tableView_bill->setModel(model);
+        ui->listView_bill->setModel(model);
 
     }
     if (count >1){
@@ -172,11 +169,11 @@ void AdminPatients::on_pushButton_search_clicked()
            int count = 0;
               while (qry->next()){
                   count ++;
-                  name = qry->value(1).toString();
-                  surname = qry->value(2).toString();
-                  birthdate = qry->value(3).toString();
-                 sex = qry->value(4).toString();
-                 doctor = qry->value(6).toString();
+                  name = qry->value(0).toString();
+                  surname = qry->value(1).toString();
+                  birthdate = qry->value(2).toString();
+                 sex = qry->value(3).toString();
+                 doctor = qry->value(5).toString();
                  ui->lineEdit_name->setText(name);
                  ui->lineEdit_surname->setText(surname);
                  ui->label_birthdate->setText(birthdate);
@@ -187,10 +184,10 @@ void AdminPatients::on_pushButton_search_clicked()
        if (count <1) QMessageBox::information(this, tr("oops"),"No such patient");}
 
   QSqlQueryModel * model = new QSqlQueryModel();
-   qry->prepare("select Service,Bill from bills where Name = '"+name+"'and Surname = '"+surname+"'");
+   qry->prepare("select Service from bills where Name = '"+name+"'and Surname = '"+surname+"' and status is null ");
     qry->exec();
    model->setQuery(*qry);
-  ui->tableView_bill->setModel(model);
+  ui->listView_bill->setModel(model);
 
    }
 }
@@ -207,11 +204,11 @@ qry->prepare("select * from patients  where  name = '"+val+"' or surname = '"+va
 
 if (qry->exec()){
       while (qry->next()){
-          name = qry->value(1).toString();
-          surname = qry->value(2).toString();
-          birthdate = qry->value(3).toString();
-         sex = qry->value(4).toString();
-         doctor = qry->value(6).toString();
+          name = qry->value(0).toString();
+          surname = qry->value(1).toString();
+          birthdate = qry->value(2).toString();
+         sex = qry->value(3).toString();
+         doctor = qry->value(5).toString();
          ui->lineEdit_name->setText(name);
          ui->lineEdit_surname->setText(surname);
          ui->label_birthdate->setText(birthdate);
@@ -220,10 +217,10 @@ if (qry->exec()){
    }
 
       QSqlQueryModel * model = new QSqlQueryModel();
-       qry->prepare("select Service,Bill from bills where Name = '"+name+"'and Surname = '"+surname+"'");
+       qry->prepare("select Service from bills where Name = '"+name+"'and Surname = '"+surname+"' and status is null ");
         qry->exec();
        model->setQuery(*qry);
-      ui->tableView_bill->setModel(model);
+      ui->listView_bill->setModel(model);
 
 }}
 
@@ -239,10 +236,10 @@ void AdminPatients::on_pushButton_clicked()
     qry->exec("update patients set doctor = '"+doctor+"' where surname = '"+surname+"' and name = '"+name+"' ");
     if (qry->exec()){
           while (qry->next()){
-              doctor = qry->value(6).toString();
-               ui->label_doctor->setText(doctor);
-          }
-           QMessageBox::information(this, tr("Success"),"Doctor changed");}
+              doctor = qry->value(5).toString();
+                    }
+           QMessageBox::information(this, tr("Success"),"Doctor changed");
+    ui->label_doctor->setText(doctor);}
       else  QMessageBox::critical(this, tr("ERROR"),qry->lastError().text());
 
 }
@@ -258,11 +255,11 @@ qry->prepare("select * from patients  where  name = '"+val+"' or surname = '"+va
 
 if (qry->exec()){
      while (qry->next()){
-         name = qry->value(1).toString();
-         surname = qry->value(2).toString();
-         birthdate = qry->value(3).toString();
-        sex = qry->value(4).toString();
-        doctor = qry->value(6).toString();
+         name = qry->value(0).toString();
+         surname = qry->value(1).toString();
+         birthdate = qry->value(2).toString();
+        sex = qry->value(3).toString();
+        doctor = qry->value(5).toString();
         ui->lineEdit_name->setText(name);
         ui->lineEdit_surname->setText(surname);
         ui->label_birthdate->setText(birthdate);
@@ -271,10 +268,10 @@ if (qry->exec()){
   }
 
      QSqlQueryModel * model = new QSqlQueryModel();
-      qry->prepare("select Service,Bill from bills where Name = '"+name+"'and Surname = '"+surname+"'");
+      qry->prepare("select Service from bills where Name = '"+name+"'and Surname = '"+surname+"' and status is null");
        qry->exec();
       model->setQuery(*qry);
-     ui->tableView_bill->setModel(model);
+     ui->listView_bill->setModel(model);
 }
 }
 
@@ -289,11 +286,11 @@ qry->prepare("select * from patients  where  name = '"+val+"' or surname = '"+va
 
 if (qry->exec()){
     while (qry->next()){
-        name = qry->value(1).toString();
-        surname = qry->value(2).toString();
-        birthdate = qry->value(3).toString();
-       sex = qry->value(4).toString();
-       doctor = qry->value(6).toString();
+        name = qry->value(0).toString();
+        surname = qry->value(1).toString();
+        birthdate = qry->value(2).toString();
+       sex = qry->value(3).toString();
+       doctor = qry->value(5).toString();
        ui->lineEdit_name->setText(name);
        ui->lineEdit_surname->setText(surname);
        ui->label_birthdate->setText(birthdate);
@@ -302,10 +299,10 @@ if (qry->exec()){
  }
 
     QSqlQueryModel * model = new QSqlQueryModel();
-     qry->prepare("select Service,Bill from bills where Name = '"+name+"'and Surname = '"+surname+"'");
+     qry->prepare("select Service from bills where Name = '"+name+"'and Surname = '"+surname+"'and status is null ");
       qry->exec();
      model->setQuery(*qry);
-    ui->tableView_bill->setModel(model);
+    ui->listView_bill->setModel(model);
 }
 }
 
@@ -329,4 +326,26 @@ void AdminPatients::on_pushButton_delete_clicked()
 
                      }
     else  QMessageBox::information(this, tr("oops"),qry->lastError().text());
+}
+
+
+
+void AdminPatients::on_listView_bill_doubleClicked(const QModelIndex &index)
+{
+    QString name,surname,analysis;
+    name=ui->lineEdit_name->text();
+    surname = ui->lineEdit_surname->text();
+    analysis=ui->listView_bill->model()->data(index).toString();
+    QSqlQuery * qry = new QSqlQuery(mydb);
+    qry->prepare("update bills set status ='PAID' where surname = '"+surname+"' and name = '"+name+"' and service = '"+analysis+"' " );
+    if (qry->exec())  {
+        QMessageBox::information(this, tr("Success"),"Service was paid");
+        QSqlQueryModel * model = new QSqlQueryModel();
+         qry->prepare("select Service from bills where Name = '"+name+"'and Surname = '"+surname+"' and status is null");
+          qry->exec();
+         model->setQuery(*qry);
+        ui->listView_bill->setModel(model);}
+
+        else QMessageBox::information(this, tr("error"),qry->lastError().text());
+
 }
